@@ -4,7 +4,10 @@ from types import MethodType
 
 from django.db.models.fields import FieldDoesNotExist
 from django.utils.text import capfirst
-from django.db.models.options import get_verbose_name
+try:
+    from django.db.models.options import get_verbose_name
+except ImportError:
+    from django.utils.text import camel_case_to_spaces as get_verbose_name
 from django.utils.functional import LazyObject
 from django.conf import settings
 
